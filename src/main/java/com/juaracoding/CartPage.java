@@ -9,10 +9,10 @@ public class CartPage {
     private WebDriver driver;
 
     @FindBy(xpath = "//*[@id='shopping_cart_container']/a")
-    private WebElement cartButton;
+    private WebElement btnCart;
 
     @FindBy(xpath = "//button[contains(text(),'Checkout')]")
-    private WebElement checkoutButton;
+    private WebElement btnCheckout;
 
 
 
@@ -22,11 +22,11 @@ public class CartPage {
     }
 
     public void openCart() {
-        cartButton.click();
+        btnCart.click();
     }
 
     public void proceedToCheckout() {
-        checkoutButton.click();
+        btnCheckout.click();
     }
 }
 

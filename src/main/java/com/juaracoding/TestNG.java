@@ -27,20 +27,60 @@ public class TestNG {
         driver.get(url);
         System.out.println("Open web eCommerce");
 
+        // login
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login("standard_user", "secret_sauce");
 
-        // product page abis ini
+        try {
+            Thread.sleep(1000); // Tunggu 1 detik
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
-    }
-    @Test
-    public void testCheckout() {
+        // product page abis ini
+        ProductPage productPage = new ProductPage(driver);
+        productPage.addToCart();
+
+        // masuk ke cart page
         CartPage cartPage = new CartPage(driver);
         cartPage.openCart();
 
+        try {
+            Thread.sleep(1000); // Tunggu 1 detik
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // lanjut klik button checkout
+        CartPage cartPage1 = new CartPage(driver);
+        cartPage1.proceedToCheckout();
+
+        try {
+            Thread.sleep(1000); // Tunggu 1 detik
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // checkout information -- input firstname, lastname, zipcode --> klik continue
         CheckoutPage checkoutPage = new CheckoutPage(driver);
         checkoutPage.fillCheckoutForm("Nunik", "Utami", "57275");
-        checkoutPage.finishCheckout();
+
+        try {
+            Thread.sleep(1000); // Tunggu 1 detik
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // finish checkout
+        CheckoutPage checkoutPage1 = new CheckoutPage(driver);
+        checkoutPage1.finishCheckout();
+
+        try {
+            Thread.sleep(1000); // Tunggu 1 detik
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
     }
     @AfterClass
     public static void tearDown() {

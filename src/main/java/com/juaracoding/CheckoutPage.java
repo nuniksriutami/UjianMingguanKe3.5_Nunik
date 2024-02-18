@@ -15,13 +15,13 @@ public class CheckoutPage {
     private WebElement lastNameInput;
 
     @FindBy(name = "postalCode")
-    private WebElement postalCodeInput;
+    private WebElement zipCodeInput;
 
     @FindBy(xpath = "//input[@value='Continue']")
-    private WebElement continueButton;
+    private WebElement btnContinue;
 
     @FindBy(xpath = "//button[text()='Finish']")
-    private WebElement finishButton;
+    private WebElement btnFinish;
 
     public CheckoutPage(WebDriver driver) {
         this.driver = driver;
@@ -31,12 +31,12 @@ public class CheckoutPage {
     public void fillCheckoutForm(String firstName, String lastName, String postalCode) {
         firstNameInput.sendKeys(firstName);
         lastNameInput.sendKeys(lastName);
-        postalCodeInput.sendKeys(postalCode);
-        continueButton.click();
+        zipCodeInput.sendKeys(postalCode);
+        btnContinue.click();
     }
 
     public void finishCheckout() {
-        finishButton.click();
+        btnFinish.click();
     }
 }
 

@@ -15,13 +15,8 @@ public class LoginPage {
     private WebElement passwordInput;
 
     @FindBy(xpath = "//input[@type='submit']")
-    private WebElement loginButton;
+    private WebElement btnLogin;
 
-    // Konstruktor dengan parameter WebDriver
-//    public LoginPage() {
-//        this.driver = driver;
-//        PageFactory.initElements(driver, this);
-//    }
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
@@ -31,6 +26,6 @@ public class LoginPage {
     public void login(String username, String password) {
         usernameInput.sendKeys(username);
         passwordInput.sendKeys(password);
-        loginButton.click();
+        btnLogin.click();
     }
 }
