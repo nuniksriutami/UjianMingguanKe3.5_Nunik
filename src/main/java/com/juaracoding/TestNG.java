@@ -30,7 +30,8 @@ public class TestNG {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login("standard_user", "secret_sauce");
 
-        // Tambahkan langkah-langkah untuk menambahkan produk ke keranjang dan proses checkout di sini
+        // product page abis ini
+
     }
     @Test
     public void testCheckout() {

@@ -14,6 +14,8 @@ public class CartPage {
     @FindBy(xpath = "//button[contains(text(),'Checkout')]")
     private WebElement checkoutButton;
 
+
+
     public CartPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
