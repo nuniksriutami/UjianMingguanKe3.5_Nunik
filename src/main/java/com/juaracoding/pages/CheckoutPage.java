@@ -1,5 +1,6 @@
 package com.juaracoding.pages;
 
+import com.juaracoding.drivers.DriverSingleton;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,35 +9,45 @@ import org.openqa.selenium.support.PageFactory;
 public class CheckoutPage {
     private WebDriver driver;
 
-    @FindBy(name = "firstName")
-    private WebElement firstNameInput;
-
-    @FindBy(name = "lastName")
-    private WebElement lastNameInput;
-
-    @FindBy(name = "postalCode")
-    private WebElement zipCodeInput;
-
-    @FindBy(xpath = "//input[@value='Continue']")
-    private WebElement btnContinue;
-
-    @FindBy(xpath = "//button[text()='Finish']")
-    private WebElement btnFinish;
-
-    public CheckoutPage(WebDriver driver) {
-        this.driver = driver;
+    public CheckoutPage(){
+        this.driver = DriverSingleton.getDriver();
         PageFactory.initElements(driver, this);
     }
 
-    public void fillCheckoutForm(String firstName, String lastName, String postalCode) {
-        firstNameInput.sendKeys(firstName);
-        lastNameInput.sendKeys(lastName);
-        zipCodeInput.sendKeys(postalCode);
-        btnContinue.click();
-    }
+    @FindBy(xpath = "//*[@id=\"checkout\"]")
+    private WebElement btnCheckout;
 
-    public void finishCheckout() {
+    @FindBy(xpath = "//*[@id=\"first-name\"]")
+    private WebElement firstName;
+
+    @FindBy(xpath = "//*[@id=\"last-name\"]")
+    private WebElement lastName;
+
+    @FindBy(xpath = "//*[@id=\"postal-code\"]")
+    private WebElement postCode;
+
+    @FindBy(xpath = "//*[@id=\"continue\"]")
+    private WebElement btnContinue;
+
+    @FindBy(xpath = "//*[@id=\"finish\"]")
+    private WebElement btnFinish;
+
+    @FindBy(xpath = "//*[@id=\"back-to-products\"]")
+    private WebElement btnBackHome;
+
+    public void CheckoutProduct(){
+        btnCheckout.click();
+        firstName.sendKeys("Nunik");
+        lastName.sendKeys("Utami");
+        postCode.sendKeys("57275");
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        btnContinue.click();
         btnFinish.click();
+        btnBackHome.click();
     }
 }
 
